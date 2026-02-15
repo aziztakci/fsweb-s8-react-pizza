@@ -63,7 +63,7 @@ export default function OrderInfo(props) {
   return (
     <InfoWrapper className="order-info">
       <HeaderImg
-        src="public/assets/iteration-2/pictures/form-banner2.png"
+        src="/assets/form-banner2.png"
         alt=""
       />
       <div>
