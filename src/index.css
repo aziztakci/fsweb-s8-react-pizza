@@ -614,7 +614,7 @@ footer .itemC {
   }
 
   .main-section {
-    background-image: url("assets/images/banner.svg");
+    background-image: url("/assets/images/banner.svg");
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: contain;

@@ -111,7 +111,7 @@ export default function SummaryPage(props) {
   const { apiData, setActivePage } = props;
   return (
     <SectionContainer className="success-container">
-      <LogoImg src="public/assets/iteration-1/logo.svg" alt="logo" />
+      <LogoImg src="/assets/iteration-1/logo.svg" alt="logo" />
       <StyledPYellow>Lezzetin yolda</StyledPYellow>
       <TitleMain>SİPARİŞ ALINDI</TitleMain>
       <Line />
