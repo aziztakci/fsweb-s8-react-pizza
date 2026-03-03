@@ -105,7 +105,7 @@ describe("Pizza Customization and Submission", () => {
             cy.get('[data-cy="toppingPrice"]').should('contain', '100.00')
             cy.get('[data-cy="noteArea"]').type("Test note.!")
 
-            cy.intercept('POST', 'https://reqres.in/api/pizza').as('orderPizza')
+            cy.intercept('POST', 'https://jsonplaceholder.typicode.com/posts').as('orderPizza')
             cy.get('[data-cy="btnSubmit"]').click()
             cy.wait('@orderPizza', { timeout: 20000 }).then((interception) => {
                 expect(interception.request.body.name).to.equal('Aziz Takcı');
@@ -118,7 +118,9 @@ describe("Pizza Customization and Submission", () => {
                 expect(interception.response.body.size).to.equal('Büyük')
                 expect(interception.request.body.note).to.equal('Test note.!');
                 console.log(`API'den gelen yanıt:`, interception.response.body);
-                expect(interception.response.body).to.have.property('createdAt')
+                //expect(interception.response.body).to.have.property('createdAt')
+                // NOTE: Reqres.in CORS policy issues. Switched to JSONPlaceholder.
+                // JSONPlaceholder doesn't provide 'createdAt' in response body.
             })
             cy.contains('SİPARİŞ ALINDI').should('be.visible');
             cy.contains('Boyut: Büyük').should('be.visible');

@@ -91,7 +91,9 @@ export default function FormInputs(props) {
     !formData.dough;
 
   const isButtonDisabled = isFormInvalid || !isValidNameFormat(formData.name);
-const api_key=import.meta.env.VITE_REQRES_API_KEY || 'reqres-free-v1';
+  // [DEPRECATED]: Reqres API key is expired. 
+  // Kept for architectural demonstration, but no longer used in the request.
+  // const api_key = import.meta.env.VITE_REQRES_API_KEY || 'reqres-free-v1';
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -107,11 +109,12 @@ const api_key=import.meta.env.VITE_REQRES_API_KEY || 'reqres-free-v1';
         totalPrice: finalTotal,
       };
 
+      // [UPDATE]: Switched from Reqres to JSONPlaceholder due to CORS and 402/403 errors.
+      // Headers removed as JSONPlaceholder is a public testing API.
+
       axios
-        .post("https://reqres.in/api/pizza", allData, {
-          headers: { "x-api-key": api_key },
-        })
-        .then((res) => {
+        .post("https://jsonplaceholder.typicode.com/posts", allData) 
+  .then((res) => {
           setApiData(res.data);
           setActivePage("success");
           setFormData(initialFormData);
